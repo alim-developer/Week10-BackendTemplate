@@ -1,29 +1,24 @@
 <div class="main">
 	<div class="content">
-		<div class="box1">
 		<?php
 			$con = new database;
 			$b = $con -> select('news');
-			while($row = mysqli_fetch_assoc($b)){ ?>
-
-			<h2><a href="single.php?id=<?=$row['id'];?>"><?=$row['title'];?></a></h2>
-			<span><?=$row['data'];?></span>
-			<div class="box1_img">
-				<img style="width: 220px; height: 130px;" src="images/imageBase/<?=$row['image'];?>" alt="" />
+			while($row = mysqli_fetch_assoc($b)){  $title = substr($row['content'], 0, 81) ?>
+			<div class="box1">
+				<h2><a href="single.php?id=<?=$row['id'];?>"><?=$title;?></a></h2>
+				<span><?=$row['data'];?></span>
+				<div class="box1_img">
+					<img style="width: 270px; height: 165px;" src="images/imageBase/<?=$row['image'];?>" alt="" />
+				</div>
+				<div class="data">
+					<p><?=substr($row['headContent'],0,450);?></p>
+					<a href="single.php?id=<?=$row['id'];?>">Continue reading >>></a>
+				</div>
+				<div class="clear"></div>
 			</div>
-			<div class="data">
-				<p><?=$row['headContent'];?></p>
-				<a href="single.php?id=<?=$row['id'];?>">Continue reading >>></a>
-			</div>
-			<div class="clear"></div>
-
-
 		<?php	
 			}
 		?>
-			
-		</div>
-		
 		<div class="page_links">
 			<div class="next_button">
 				<a href="#">Next</a>

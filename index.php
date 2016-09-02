@@ -21,31 +21,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		include'main.php';
 	?>
 	<div class="sidebar">
-		<div class="side_top">
-		    <h2>Recent Feeds</h2>
-			<div class="list1">
-				 <ul>
-					<li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-					<li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-					<li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-					<li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-					<li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-					<li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-				</ul>
-			</div>
-		</div>
+		<?php
+			include 'recend.php';
+		?>
 	<div class="side_bottom">
-	    <h2>Most Viewed</h2>
-		<div class="list2">
-		    <ul>
-			  <li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-			  <li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-			  <li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-			  <li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-			  <li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-			  <li><a href="#">Lorem ipsum dolor desktop publishing</a></li>
-			</ul>
-		</div>
+	    <?php
+	    	include 'mostViewed.php';
+	    ?>
 	</div>
 	</div>
 	<div class="clear"></div>

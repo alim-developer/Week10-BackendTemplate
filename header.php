@@ -24,11 +24,12 @@
 			    		while($row = mysqli_fetch_assoc($answer)){ ?>
 			    		<li><a href="index.php"><?=$row['name'];?></a></li>
 			    	<?php } ?>
+			    	<li><a href="contact.php">CONTACT</a></li>
 			    </ul>
 			</div>
 			<div class="search_box">
-			    <form>
-			    <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+			    <form action="search.php" method="POST">
+			    <input type="text" name="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" name="submit" value="">
 			    </form>
 			</div>
 			<div class="clear"></div>

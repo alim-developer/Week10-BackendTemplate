@@ -11,7 +11,6 @@
 		<a class="btn btn-default" href="create.php">Create</a>
 		<table class="table">
 			<tr>
-				<th>Head</th>
 				<th>Head Text</th>
 				<th>Text</th>
 				<th>Image</th>
@@ -26,7 +25,6 @@
 				while($row = mysqli_fetch_assoc($b)){
 			?>
 				<tr>
-				<td><?=$row['title'];?></td>
 				<td><?=$row['headContent'];?></td>
 				<td><?=$row['content'];?></td>
 				<td><img src="../../images/imageBase/<?=$row['image'];?>"></td>

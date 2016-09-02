@@ -14,9 +14,10 @@ class database{
 			echo 'Database not found';
 		}
 	}
-	public function select($table, $column = "*", $id = NULL, $whereColumn = NULL, $search=NULL){
+	public function select($table, $column = "*", $id = NULL, $whereColumn = NULL, $search=NULL, $orderByColumn = NULL, $ABC_DESC = NULL, $limit = NULL){
 		if($this->connect){
 			$sql = "SELECT $column FROM $table ";
+
 			if ($id != NULL) {
 				$sql .= ' WHERE id='.$id;
 			}
@@ -26,6 +27,14 @@ class database{
 			if ($search != NULL) {
 				$sql .= " LIKE "."'%".$search."%'";
 			}
+			if ($orderByColumn != NULL || $ABC_DESC != NULL) {
+				$sql .= ' ORDER BY '.$orderByColumn.' '.$ABC_DESC;
+			}
+			if ($limit != NULL) {
+				$sql .= " LIMIT ".$limit;
+			}
+
+
 			$query = mysqli_query($this -> connect, $sql);
 			return $query;
 		}else{
@@ -54,7 +63,7 @@ class database{
 			
 			$sql = "INSERT INTO $table($column) VALUES ($columnName)";
 			$query = mysqli_query($this -> connect, $sql);
-			
+			return $sql;
 
 		}else{
 			echo'Error';

@@ -28,6 +28,10 @@
 				<td>Change News</td>
 				<td><a class="btn btn-default" href="news/news.php">Next</a></td>
 			</tr>
+			<tr>
+				<td>View Feedbacks</td>
+				<td><a class="btn btn-default" href="feedback/feedback.php">Next</a></td>
+			</tr>
 		</table>
 		<a class="btn btn-default" href="logout.php">logout</a>
 	</section>

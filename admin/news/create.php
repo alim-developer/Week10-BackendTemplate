@@ -13,8 +13,6 @@
 			
 			
 			<form action="createCode.php" method="POST" enctype="multipart/form-data">
-				<label>Change Head</label>
-				<textarea rows="4" type="text" name="title"></textarea>
 				<label>Change Head Text</label>
 				<textarea rows="8" type="text" name="headContent"></textarea>
 				<label>Change Big Text</label>
