@@ -2,7 +2,19 @@
 	<div class="content">
 		<?php
 			$con = new database;
-			$b = $con -> select('news');
+			$page = 5;
+			$c = $con -> select('news','COUNT(*) AS id');
+			$row1 = mysqli_fetch_assoc($c);
+			$total = $row1['id'];
+			$totalPage = ceil($total / $page);
+
+			$id = isset($_GET['id']) ? (int) $_GET['id'] : 1;
+			if($id < 1) $id = 1; 
+			if($id > $totalPage) $id = $totalPage; 
+ 
+			$limit = ($id - 1) * $page;
+
+			$b = $con -> select('news','*',NULL,NULL,NULL,"id","DESC","$limit, $page");
 			while($row = mysqli_fetch_assoc($b)){  $title = substr($row['content'], 0, 81) ?>
 			<div class="box1">
 				<h2><a href="single.php?id=<?=$row['id'];?>"><?=$title;?></a></h2>
@@ -25,12 +37,16 @@
 			</div>
 			<div class="page_numbers">
 				<ul>
-					<li><a href="#">1</a>
-					<li><a href="#">2</a>
-					<li><a href="#">3</a>
-					<li><a href="#">4</a>
-					<li><a href="#">5</a>
-					<li><a href="#">6</a>
+					<?php
+						for($i = 1; $i <= $totalPage; $i++) {
+	  						if($id == $i) { 
+	   							echo $i . ' '; 
+	  		 				}else {
+								echo '<li><a href="index.php?id=' . $i . '">' . $i . '</a></li> ';
+							}
+						}
+					?>
+
 					<li><a href="#">... Next</a>
 				</ul>
 			</div>

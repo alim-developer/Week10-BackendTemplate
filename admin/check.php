@@ -14,7 +14,7 @@
 		if(!empty($username) && !empty($password)){
 			if($username == $login && $password == $pass){
 				header('Location: admin.php');
-				$_SESSION['admin'] == true;
+				$_SESSION['admin'] = true;
 			}else{
 				$_SESSION['error'] = 'Wrong username or password';
 				header('Location: login.php');
@@ -24,4 +24,12 @@
 			header('Location: login.php');
 		}
 	}
+
+	if(isset($_SESSION['bug'])!=true){
+		header('Location: login.php');
+		unset($_SESSION['bug']);
+	}else{
+		header('Location: admin.php');
+	}
+
 ?>

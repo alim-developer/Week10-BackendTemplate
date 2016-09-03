@@ -1,11 +1,11 @@
 <?php
 
 class database{
-	public $hostname = 'localhost';
-	public $username = 'root';
-	public $password = '';
-	public $db_name = 'week10day04-task';
-	public $connect;
+	private $hostname = 'localhost';
+	private $username = 'root';
+	private $password = '';
+	private $db_name = 'week10day04-task';
+	private $connect;
 
 	public function __construct(){
 		$this -> connect = mysqli_connect($this -> hostname, $this -> username, $this -> password, $this -> db_name);
@@ -14,7 +14,7 @@ class database{
 			echo 'Database not found';
 		}
 	}
-	public function select($table, $column = "*", $id = NULL, $whereColumn = NULL, $search=NULL, $orderByColumn = NULL, $ABC_DESC = NULL, $limit = NULL){
+	public function select($table, $column = "*", $id = NULL, $whereColumn = NULL, $search=NULL, $orderByColumn = NULL, $ABC_DESC = NULL, $limit = NULL, $offset = NULL){
 		if($this->connect){
 			$sql = "SELECT $column FROM $table ";
 
@@ -32,6 +32,9 @@ class database{
 			}
 			if ($limit != NULL) {
 				$sql .= " LIMIT ".$limit;
+			}
+			if ($offset != NULL) {
+				$sql .= " OFFSET ".$offset;
 			}
 
 
@@ -68,6 +71,15 @@ class database{
 		}else{
 			echo'Error';
 		}
+	}
+	public function slug($slug){
+		$a = '/[^\-\s\pN\pL]+/u';
+		$b = '/[\-\s]+/';
+		$slug = preg_replace($a, '', mb_strtolower($slug, 'UTF-8'));
+		$slug = preg_replace($b, '-', $slug);
+		$slug = trim($slug, '-');
+
+		return $slug;
 	}
 }
 
